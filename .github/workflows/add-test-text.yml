@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write  # Required to push changes
+      contents: read  # Minimal permissions, using GitHub App token instead
     
     steps:
 
@@ -43,6 +43,8 @@ jobs:
           git commit -m "Add test text to README [automated]"
       
       - name: Push changes
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          git push origin main
+          git push https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.repository }}.git main
 
