@@ -22,27 +22,33 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ steps.app-token.outputs.token }}
+
+      
+      - name: Checkout target repository
+        uses: actions/checkout@v5
+        with:
+          repository: buscadordeleiloes/testPublic2
+          path: testPublic2
+          token: ${{ steps.app-token.outputs.token }}
+          ref: main
       
       - name: Add test text to README
         run: |
+          cd testPublic2
+          git checkout main
+
           # Get current timestamp
           TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
           
           # Add test text with timestamp to README.md
           echo "" >> README.md
           echo "Test text added at: $TIMESTAMP" >> README.md
-      
-      - name: Configure Git
-        run: |
+
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-      
-      - name: Commit changes
-        run: |
+
           git add README.md
           git commit -m "Add test text to README [automated]"
-      
-      - name: Push changes
-        run: |
+
           git push origin main
 
