@@ -17,6 +17,8 @@ jobs:
         with:
           app-id: ${{ secrets.BYPASS_BRANCH_APP_ID }}
           private-key: ${{ secrets.BYPASS_BRANCH_PRIVATE_KEY }}
+          owner: buscadordeleiloes
+          repositories: testPublic2
 
       - name: Checkout repository
         uses: actions/checkout@v4
