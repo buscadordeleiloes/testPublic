@@ -51,7 +51,5 @@ jobs:
 
           git add README.md
           git commit -m "Add test text to README [automated]"
-          git remote set-url origin https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/buscadordeleiloes/testPublic2.git
-
           git push origin main
 
