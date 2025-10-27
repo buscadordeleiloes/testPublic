@@ -47,32 +47,6 @@
       }
     ],
     [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "echo ${nextRelease.version} > .version",
-        "publishCmd": "./create-release-archives.sh ${nextRelease.version}"
-      }
-    ],
-    [
-      "@semantic-release/github",
-      {
-        "assets": [
-          {
-            "path": "cognigy-ai-installer.zip",
-            "label": "Cognigy AI Installer v${nextRelease.version}"
-          },
-          {
-            "path": "install-tools.zip",
-            "label": "Interactive Tool Installer v${nextRelease.version}"
-          },
-          {
-            "path": "sre-onboarding.zip",
-            "label": "SRE Onboarding Tool Installer v${nextRelease.version}"
-          }
-        ]
-      }
-    ],
-    [
       "@semantic-release/git",
       {
         "assets": ["CHANGELOG.md"],
